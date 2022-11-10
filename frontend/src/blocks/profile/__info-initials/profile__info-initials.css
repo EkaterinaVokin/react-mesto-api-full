@@ -1,0 +1,23 @@
+.profile__info-initials {
+  color: #fff;
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 1.14;
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@media (max-width: 992px) {
+  .profile__info-initials {
+    font-size: 35px;
+  }
+}
+
+@media (max-width: 576px) {
+  .profile__info-initials {
+    font-size: 27px;
+    line-height: 1.21;
+  }
+}

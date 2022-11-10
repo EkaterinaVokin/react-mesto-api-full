@@ -1,0 +1,14 @@
+.header__burger-menu_opened .header__burger-bar:nth-child(1){
+  transform: rotate(45deg) translateY(7px) translateX(5px);
+  transition: ease-out 0.5s;
+}
+
+.header__burger-menu_opened .header__burger-bar:nth-child(2){
+  transform: scale(0.1);
+  transition: ease-out 0.5s;
+}
+
+.header__burger-menu_opened .header__burger-bar:nth-child(3){
+  transform: rotate(135deg) translateY(7px) translateX(-5px);
+  transition: ease-out 0.5s;
+}

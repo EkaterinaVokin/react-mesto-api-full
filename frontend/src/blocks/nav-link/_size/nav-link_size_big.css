@@ -1,0 +1,10 @@
+.nav-link_size_big {
+  font-size: 18px;
+  height: 22px;
+}
+
+/* @media (max-width: 576px) {
+  .nav-link_size_big {
+    font-size: 14px;
+  }
+} */

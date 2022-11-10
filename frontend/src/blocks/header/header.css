@@ -1,0 +1,15 @@
+.header {
+  min-height: 74px;
+}
+
+@media (max-width: 992px) {
+  .header {
+    min-height: 64px;
+  }
+}
+
+@media (max-width: 576px) {
+  .header {
+    min-height: 56px;
+  }
+}

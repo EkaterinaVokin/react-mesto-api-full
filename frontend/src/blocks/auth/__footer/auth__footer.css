@@ -1,0 +1,14 @@
+.auth__footer {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.21;
+  margin-top: 15px;
+  text-align: center;
+}
+
+@media (max-width: 576px) {
+  .auth__footer {
+    margin-top: 20px;
+  }
+}
