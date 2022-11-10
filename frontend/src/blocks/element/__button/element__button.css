@@ -1,0 +1,13 @@
+.element__button {
+  background-image: url(../../../images/heart.svg);
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+  background-repeat: no-repeat;
+  border:none;
+  background-color: #fff;
+  background-position: top right;
+  height: 19px;
+  width: 22px;
+  cursor: pointer;
+  flex-shrink: 0;
+}

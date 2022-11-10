@@ -1,0 +1,21 @@
+.profile__info-column {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 992px) {
+  .profile__info-column {
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .profile__info-column {
+    margin-bottom: 14px;
+    margin-top: 26px;
+    padding-left: 46px;
+    padding-right: 19px;
+  }
+}
+
