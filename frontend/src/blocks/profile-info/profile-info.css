@@ -1,0 +1,14 @@
+.profile-info {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.22;
+  color: #fff;
+  margin-right: 24px;
+}
+
+@media (max-width: 576px) {
+  .profile-info {
+    margin-right: 0px;
+    margin-bottom: 18px;
+  }
+}

@@ -1,0 +1,6 @@
+.popup__container_dynamic_width {
+  padding: 0;
+  background: none;
+  width: auto;
+  max-width: none;
+}

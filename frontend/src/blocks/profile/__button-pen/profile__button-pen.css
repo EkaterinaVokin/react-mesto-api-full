@@ -1,0 +1,35 @@
+.profile__button-pen {
+  height: 24px;
+  max-width: 24px;
+  padding: 6px;
+  border: 1px solid #fff;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+  cursor: pointer;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  margin-left: 18px;
+}
+
+.profile__button-pen:hover {
+  opacity: 0.6;
+}
+
+@media (max-width: 992px) {
+  .profile__button-pen {
+    height: 20px;
+    max-width: 20px;
+    padding: 4px 6px;
+    margin-left: 13px;
+  }
+}
+
+@media (max-width: 576px) {
+  .profile__button-pen {
+    height: 18px;
+    max-width: 18px;
+    padding: 3px 5px;
+    margin-left: 10px;
+  }
+}

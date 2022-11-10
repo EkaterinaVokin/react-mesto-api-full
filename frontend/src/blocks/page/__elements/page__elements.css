@@ -1,0 +1,9 @@
+.page__elements {
+  margin-top: 47px;
+}
+
+@media (max-width: 576px) {
+  .page__elements {
+    margin-top: 36px;
+  }
+}

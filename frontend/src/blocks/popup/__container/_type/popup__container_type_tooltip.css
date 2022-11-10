@@ -1,0 +1,10 @@
+.popup__container_type_tooltip {
+  padding: 60px 36px;
+}
+
+@media (max-width: 576px) {
+  .popup__container_type_tooltip {
+    padding: 50px 18px;
+    max-width: 280px;
+  }
+}

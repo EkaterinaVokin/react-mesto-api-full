@@ -1,0 +1,9 @@
+.auth__container_margin_bottom{
+  margin-bottom: 80px;
+}
+
+@media (max-width: 576px) {
+  .auth__container_margin_bottom  {
+    margin-bottom: 40px;
+  }
+}

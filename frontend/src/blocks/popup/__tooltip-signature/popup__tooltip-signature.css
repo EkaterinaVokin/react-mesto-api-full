@@ -1,0 +1,15 @@
+.popup__tooltip-signature {
+  font-size: 24px;
+  color: #000;
+  font-weight: 900;
+  line-height: 1.20;
+  text-align: center;
+  margin-top: 32px;
+}
+
+@media (max-width: 576px) {
+  .popup__tooltip-signature {
+    margin-top: 40px;
+    font-size: 20px;
+  }
+}
