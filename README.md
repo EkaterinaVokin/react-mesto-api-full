@@ -50,6 +50,6 @@
 
 # Ссылки:
 IP 158.160.32.171
-['Frontend'](https://mesto.vokin.nomoredomains.icu)
+['Frontend'](https://mesto.vokin.nomoredomains.icu) или ['Frontend'](http://mesto.vokin.nomoredomains.icu)
 ['Backend'](https://api.mesto.vokin.nomoredomains.icu)
 
