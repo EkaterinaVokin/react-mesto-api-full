@@ -23,6 +23,12 @@ const { PORT = 3000 } = process.env;
 app.use(simpleRequest); // простые CORS-запросы
 app.use(complexRequest); // сложные CORS-запросы
 
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 app.use(requestLogger); // подключаем логгер запросов
 
 // регистрация и авторизация
