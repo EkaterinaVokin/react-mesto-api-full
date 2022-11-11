@@ -8,6 +8,7 @@ const centerErrors = require('./middlewares/ centerErrors'); // модуль о�
 const NotFoundError = require('./errors/not-found-err');
 const routes = require('./routes/index'); // импортировать роуты регистарция и авторизация
 const { requestLogger, errorLogger } = require('./middlewares/logger'); // логеры ошибок
+const { simpleRequest, complexRequest } = require('./middlewares/allowedCors'); // cors запросы
 
 const app = express();
 
@@ -18,6 +19,9 @@ app.use(helmet()); // безопасность
 app.use(cookieParser()); // подключаем парсер кук как мидлвэр
 
 const { PORT = 3000 } = process.env;
+
+app.use(simpleRequest); // простые CORS-запросы
+app.use(complexRequest); // сложные CORS-запросы
 
 app.use(requestLogger); // подключаем логгер запросов
 
