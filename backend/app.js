@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
@@ -9,6 +11,7 @@ const NotFoundError = require('./errors/not-found-err');
 const routes = require('./routes/index'); // импортировать роуты регистарция и авторизация
 const { requestLogger, errorLogger } = require('./middlewares/logger'); // логеры ошибок
 const { simpleRequest, complexRequest } = require('./middlewares/allowedCors'); // cors запросы
+const { PORT } = require('./constants');
 
 const app = express();
 
@@ -17,8 +20,6 @@ app.use(express.json());
 app.use(helmet()); // безопасность
 
 app.use(cookieParser()); // подключаем парсер кук как мидлвэр
-
-const { PORT = 3000 } = process.env;
 
 app.use(simpleRequest); // простые CORS-запросы
 app.use(complexRequest); // сложные CORS-запросы
