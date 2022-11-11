@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://auth.nomoreparties.co'; // базовая ссылка
+export const BASE_URL = process.env.API_URL || 'https://auth.nomoreparties.co'; // базовая ссылка
 
 export function request({url,method = 'POST',token,data}) {
   return fetch(`${BASE_URL}${url}`, {
