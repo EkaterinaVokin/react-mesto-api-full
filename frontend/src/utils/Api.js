@@ -93,7 +93,7 @@ class Api {
 }
 
 const object = {
-  url: process.env.API_URL || 'https://mesto.nomoreparties.co/v1/cohort-46',
+  url: process.env.REACT_APP_API_URL || 'https://mesto.nomoreparties.co/v1/cohort-46',
   // headers: {
   //   authorization: '6c0bf2e5-ec84-4708-82f0-c36df46da976',
   // },
