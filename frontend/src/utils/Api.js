@@ -93,10 +93,10 @@ class Api {
 }
 
 const object = {
-  url: 'https://mesto.nomoreparties.co/v1/cohort-46',
-  headers: {
-    authorization: '6c0bf2e5-ec84-4708-82f0-c36df46da976',
-  },
+  url: process.env.API_URL || 'https://mesto.nomoreparties.co/v1/cohort-46',
+  // headers: {
+  //   authorization: '6c0bf2e5-ec84-4708-82f0-c36df46da976',
+  // },
 };
 
  export const api = new Api(object);
