@@ -1,6 +1,7 @@
 const allowedCors = [
   'https://mesto.vokin.nomoredomains.icu',
   'http://mesto.vokin.nomoredomains.icu',
+  'http://localhost:3000',
 ]; // домен который разрешен
 
 // простые CORS-запросы
