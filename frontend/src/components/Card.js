@@ -11,7 +11,7 @@ export function Card(props) {
  
   const isLiked = card.likes.some((like) => {
     // проверяем, есть ли уже лайк на этой карточке
-    return like._id === user._id;
+    return like === user._id;
   });
 
   const cardRemoveButtonClassName = ( // Создаём переменную, которую после зададим в `className` для кнопки удаления

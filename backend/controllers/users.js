@@ -150,6 +150,15 @@ const getMe = (req, res, next) => {
     });
 };
 
+// выход пользователя
+const logout = (req, res) => {
+  res.cookie('jwt', null, {
+    maxAge: 0,
+    httpOnly: true,
+  });
+  res.send({});
+};
+
 module.exports = {
   getUsers,
   getUserById,
@@ -157,5 +166,6 @@ module.exports = {
   updateProfile,
   updateAvatar,
   login,
+  logout,
   getMe,
 };
