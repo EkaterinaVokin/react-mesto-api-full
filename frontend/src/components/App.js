@@ -5,7 +5,7 @@ import { Login } from './Login';
 import { Register } from './Register';
 import { ProtectedRoute } from './ProtectedRoute';
 import { InfoTooltip } from './InfoTooltip.js';
-import { register, authorize, getContent } from '../utils/duckAuth.js';
+import { register, authorize, getContent, logout } from '../utils/duckAuth.js';
 import { Main } from './Main.js';
 import { Header } from './Header.js';
 import { EditProfilePopup } from './EditProfilePopup.js';
@@ -22,7 +22,6 @@ function App() {
     about: '',
   }); // пер.состояния текущего пользователя
 
-  const [token, setToken] = useState(localStorage.getItem('token')); // пер.состояния токена
   const [stateIsLogin, setStateIsLogin] = useState({ isLoggedIn: false, email: '' });
   const [hasInfoTooltip, setHasInfoTooltip] = useState(false); // пер.состояния видимости тултипа
   const [isError, setIsError] = useState(false); // пер.состония ошибки тултипа
@@ -216,11 +215,8 @@ function App() {
 
   function handleSubmitLogin(dataUser) {
     return authorize(dataUser.email, dataUser.password)
-      .then((data) => {
-        if (data.token) {
-          localStorage.setItem('token', data.token); // сохраняем токен в хранилище
-          setToken(data.token);
-        }
+      .then(() => {
+        return checkToken();
       })
       .catch((err) => {
         setIsError(true); // показывает что произошла ошибка данные не ушли на сервер
@@ -229,31 +225,30 @@ function App() {
   }
 
   useEffect(() => {
-    tokenCheck(token);
-  }, [token]);
+    checkToken();
+  }, []);
 
-  function tokenCheck(token) {
-    if (!token) {
-      return; // если нет токена в хранилище выходим из функции
-    }
-    return getContent(token) // отправляем токен на сервер
-      .then((res) => {
+  function checkToken() {
+    return getContent()
+      .then((res) => { 
         if (res) {
           setStateIsLogin({
             isLoggedIn: true,
-            email: res.data.email,
+            email: res.email,
           });
           history.push('/');
         }
       })
       .catch(() => {
-        Promise.reject(`Ошибка`);
+        return Promise.reject(`Ошибка`);
       });
   }
 
   function handleLogout() {
-    localStorage.removeItem('token');
-    history.push('sign-in');
+    return logout()
+      .then(() => {
+        history.push('sign-in');
+      });
   }
 
   return (

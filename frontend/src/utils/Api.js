@@ -5,7 +5,10 @@ class Api {
   }
   _request(url, options) {
     // функция запрос которая принимает два аргумента ссылку и объект опций
-    return fetch(url, options).then((res) => {
+    return fetch(url, {
+      ...options,
+      credentials: 'include',
+    }).then((res) => {
       return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
     });
   }
@@ -94,9 +97,7 @@ class Api {
 
 const object = {
   url: process.env.REACT_APP_API_URL || 'https://mesto.nomoreparties.co/v1/cohort-46',
-  // headers: {
-  //   authorization: '6c0bf2e5-ec84-4708-82f0-c36df46da976',
-  // },
+  headers: {},
 };
 
  export const api = new Api(object);

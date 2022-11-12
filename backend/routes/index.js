@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { celebrate, Joi } = require('celebrate');
 const { REGEX_URL } = require('../constants');
-const { createUser, login } = require('../controllers/users');
+const { createUser, login, logout } = require('../controllers/users');
 
 // авторизация
 router.post('/signin', celebrate({
@@ -21,5 +21,8 @@ router.post('/signup', celebrate({
     avatar: Joi.string().pattern(REGEX_URL),
   }),
 }), createUser);
+
+// выход
+router.delete('/signout', logout);
 
 module.exports = router;
