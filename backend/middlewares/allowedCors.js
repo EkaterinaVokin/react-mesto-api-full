@@ -2,6 +2,7 @@ const allowedCors = [
   'https://mesto.vokin.nomoredomains.icu',
   'http://mesto.vokin.nomoredomains.icu',
   'http://localhost:3000',
+  'http://localhost:3001',
 ]; // домен который разрешен
 
 // простые CORS-запросы
@@ -9,6 +10,7 @@ const simpleRequest = (req, res, next) => {
   const { origin } = req.headers; // Сохраняем источник запроса в переменную origin
   if (allowedCors.includes(origin)) { // проверяем, что источник запроса есть среди разрешённых
     res.header('Access-Control-Allow-Origin', origin); // устанавливаем заголовок, который разрешает браузеру запросы с этого источника
+    res.header('Access-Control-Allow-Credentials', true);
   }
   next(); // Если источник запроса не найден,браузер сам заблокирует запрос
 };
