@@ -1,12 +1,12 @@
 export const BASE_URL = process.env.REACT_APP_API_URL || 'https://auth.nomoreparties.co'; // базовая ссылка
 
-export function request({url,method = 'POST',token,data}) {
+export function request({ url, method = 'POST', data }) {
   return fetch(`${BASE_URL}${url}`, {
     method,
     headers: {
-      "Content-Type": "application/json",
-      ...!!token && {"Authorization" : `Bearer ${token}`} 
+      'Content-Type': 'application/json',
     },
+    credentials: 'include',
     ...!!data && {body:JSON.stringify(data)}
     })
   .then((res) => {
@@ -31,11 +31,18 @@ export function authorize (email,password) {
 }
 
 // проверить токен и получить данные пользователя
-export function getContent (token) {
+export function getContent () {
   return request({
     url: '/users/me',
     method: 'GET',
-    token
+  })
+}
+
+// выход пользователя
+export function logout () {
+  return request({
+    url: '/signout',
+    method: 'DELETE',
   })
 }
  
