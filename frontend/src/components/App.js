@@ -247,6 +247,14 @@ function App() {
   function handleLogout() {
     return logout()
       .then(() => {
+        setStateIsLogin({
+          isLoggedIn: false,
+          email: '',
+        });
+        setCurrentUser({
+          name: '',
+          about: '',
+        })
         history.push('sign-in');
       });
   }

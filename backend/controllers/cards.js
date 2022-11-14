@@ -8,6 +8,7 @@ const ForbiddenError = require('../errors/forbidden-err');
 // возвращает все карточки
 const getCards = (req, res, next) => {
   Card.find({})
+    .sort({ createdAt: 'desc' })
     .populate('owner')
     .then((cards) => {
       res.send(cards);
