@@ -15,6 +15,7 @@ import { RemoveCard } from './RemoveCard.js';
 import { Footer } from './Footer.js';
 import { ImagePopup } from './ImagePopup.js';
 import { api } from '../utils/Api';
+import { PublicRoute } from './PublicRoute.js';
 
 function App() {
   const [currentUser, setCurrentUser] = useState({
@@ -262,12 +263,12 @@ function App() {
   return (
     <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
       <Switch>
-        <ProtectedRoute path="/sign-up" isLoggedIn={!stateIsLogin.isLoggedIn}>
+        <PublicRoute path="/sign-up" isLoggedIn={stateIsLogin.isLoggedIn}>
           <Register onSubmit={handleSubmitRegister} />
-        </ProtectedRoute>
-        <ProtectedRoute path="/sign-in" isLoggedIn={!stateIsLogin.isLoggedIn}>
+        </PublicRoute>
+        <PublicRoute path="/sign-in" isLoggedIn={stateIsLogin.isLoggedIn}>
           <Login onSubmit={handleSubmitLogin} />
-        </ProtectedRoute>
+        </PublicRoute>
         <ProtectedRoute exact path="/" isLoggedIn={stateIsLogin.isLoggedIn}>
           <Header
             hasMenu={true}
