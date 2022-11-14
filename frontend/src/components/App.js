@@ -262,12 +262,12 @@ function App() {
   return (
     <CurrentUserContext.Provider value={{ currentUser, setCurrentUser }}>
       <Switch>
-        <Route path="/sign-up">
+        <ProtectedRoute path="/sign-up" isLoggedIn={!stateIsLogin.isLoggedIn}>
           <Register onSubmit={handleSubmitRegister} />
-        </Route>
-        <Route path="/sign-in">
+        </ProtectedRoute>
+        <ProtectedRoute path="/sign-in" isLoggedIn={!stateIsLogin.isLoggedIn}>
           <Login onSubmit={handleSubmitLogin} />
-        </Route>
+        </ProtectedRoute>
         <ProtectedRoute exact path="/" isLoggedIn={stateIsLogin.isLoggedIn}>
           <Header
             hasMenu={true}
