@@ -3,7 +3,7 @@ const { default: mongoose } = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
-const { JWT_SECRET, MONGO_CODE } = require('../constants');
+const { JWT_SECRET, MONGO_CODE, NODE_ENV } = require('../constants');
 const BadRequestError = require('../errors/bad-request-err');
 const NotFoundError = require('../errors/not-found-err');
 const ConflictingRequestError = require('../errors/conflicting-request-err');
@@ -118,7 +118,7 @@ const login = (req, res, next) => {
         if (!matched) { // если пароли не совпали
           throw new UnauthorizedError('Неправильные почта или пароль');
         }
-        const token = jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: '7d' }); // создаем токен если совпали емаил и пароль
+        const token = jwt.sign({ _id: user._id }, `${NODE_ENV === 'production' ? JWT_SECRET : 'yandex-praktikum'}`, { expiresIn: '7d' }); // создаем токен если совпали емаил и пароль
         return token; // возвращаем токен
       }))
     .then((token) => {
@@ -126,7 +126,7 @@ const login = (req, res, next) => {
         maxAge: 3600000,
         httpOnly: true,
       });
-      res.send({});
+      res.send({ message: 'Успешный логин' });
     })
     .catch((err) => {
       next(err);
@@ -142,8 +142,6 @@ const getMe = (req, res, next) => {
     .catch((err) => {
       if (err instanceof mongoose.Error.DocumentNotFoundError) {
         next(new NotFoundError('Пользователя с запрошенным _id не существует'));
-      } else if (err instanceof mongoose.Error.CastError) {
-        next(new BadRequestError('Не корректный _id'));
       } else {
         next(err);
       }
@@ -156,7 +154,7 @@ const logout = (req, res) => {
     maxAge: 0,
     httpOnly: true,
   });
-  res.send({});
+  res.send({ message: 'Выход' });
 };
 
 module.exports = {

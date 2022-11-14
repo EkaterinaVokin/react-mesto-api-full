@@ -39,7 +39,7 @@ app.use('/', auth, require('./routes/users'));
 app.use('/', auth, require('./routes/cards'));
 
 // обработка несуществующих маршрутов
-app.use('*', (req, res, next) => {
+app.use('*', auth, (req, res, next) => {
   next(new NotFoundError(`Запрашиваемый ресурс ${req.baseUrl} не найден`));
 });
 
