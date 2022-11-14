@@ -3,7 +3,7 @@ const { default: mongoose } = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
-const { JWT_SECRET, MONGO_CODE } = require('../constants');
+const { JWT_SECRET, MONGO_CODE, NODE_ENV } = require('../constants');
 const BadRequestError = require('../errors/bad-request-err');
 const NotFoundError = require('../errors/not-found-err');
 const ConflictingRequestError = require('../errors/conflicting-request-err');
@@ -118,7 +118,7 @@ const login = (req, res, next) => {
         if (!matched) { // если пароли не совпали
           throw new UnauthorizedError('Неправильные почта или пароль');
         }
-        const token = jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: '7d' }); // создаем токен если совпали емаил и пароль
+        const token = jwt.sign({ _id: user._id }, `${NODE_ENV === 'production' ? JWT_SECRET : 'yandex-praktikum'}`, { expiresIn: '7d' }); // создаем токен если совпали емаил и пароль
         return token; // возвращаем токен
       }))
     .then((token) => {
