@@ -142,8 +142,6 @@ const getMe = (req, res, next) => {
     .catch((err) => {
       if (err instanceof mongoose.Error.DocumentNotFoundError) {
         next(new NotFoundError('Пользователя с запрошенным _id не существует'));
-      } else if (err instanceof mongoose.Error.CastError) {
-        next(new BadRequestError('Не корректный _id'));
       } else {
         next(err);
       }
