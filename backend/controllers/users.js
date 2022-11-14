@@ -126,7 +126,7 @@ const login = (req, res, next) => {
         maxAge: 3600000,
         httpOnly: true,
       });
-      res.send({});
+      res.send({ message: 'Успешный логин' });
     })
     .catch((err) => {
       next(err);
@@ -156,7 +156,7 @@ const logout = (req, res) => {
     maxAge: 0,
     httpOnly: true,
   });
-  res.send({});
+  res.send({ message: 'Выход' });
 };
 
 module.exports = {
